@@ -1,20 +1,22 @@
 {
   "name": "seguranca-nodejs",
   "version": "1.0.0",
-  "description": "Criar uma api node com autenticação jwt e validações ACL",
+  "description": "Criar uma api node com autenticação jwt e validações ACL - já as fiz, apenas relebrando",
   "main": "index.js",
   "nodeVersion": "18.15.0",
   "scripts": {
     "start": "nodemon ./api/index.js"
   },
   "keywords": [],
-  "author": "Raphael Lucas Girao de Lima",
+  "author": "Raphael Lucas Girao de Lima, Estudande - Matheus Mozart",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
     "express": "^4.18.2",
+    "mysql2": "^3.6.5",
     "path": "^0.12.7",
-    "pg": "^8.8.0",
+    "pg": "^8.11.3",
     "sequelize": "^6.26.0",
     "sequelize-cli": "^6.5.2",
     "uuid": "^9.0.0"
