@@ -1,39 +1,42 @@
 const uuid = require('uuid')
 const database = require('../models')
 
-class RoleService {
+class PermissaoService {
+ 
   async cadastrar(dto){
-    const role = await  database.roles.findOne({
-      where:{
-        nome: dto.nome
-      }
-    })
-    if (role){
-      throw new Error('Role já cadastrada')
+   
+      const permission = await database.permissoes.findOne({
+        where: {
+          nome: dto.nome
+        }
+      })
+    if (permission){
+      throw new Error('Permissão já cadastrada')
     }
 
     try {
-      const newRole = await database.roles.create({
+      const newPermission = await database.permissoes.create({
         id: uuid.v4(),
         nome: dto.nome,
         descricao: dto.descricao
       })
       
-      return newRole
+      return newPermission 
 
     } catch (error) {
    
       throw new Error(error)
     }
 
+
   }
 
-  async allRoles(){
+  async findAll(){
    
     try {
-      const roles = await database.roles.findAll()
+      const permission = await database.permissoes.findAll();
       
-      return roles
+      return permission
 
     } catch (error) {
    
@@ -42,16 +45,16 @@ class RoleService {
 
   }
 
-  async roleById(dto){
+  async findById(dto){
    
     try {
-      const role = await database.roles.findOne({
+      const permission = await database.permissoes.findOne({
         where: {
           id: dto.id
         }
       })
-      
-      return role
+    
+      return permission
 
     } catch (error) {
    
@@ -60,9 +63,9 @@ class RoleService {
 
   }
 
-  async roleUpdate(dto){
+  async update(dto){
    
-    const role = await this.roleById(dto.id)
+    const role = await this.findById(dto.id)
 
   
 
@@ -83,13 +86,13 @@ class RoleService {
 
   }
 
-  async roleDelete(dto){
+  async delete(dto){
    
-    const role =  await this.roleById(dto.id)
+    const role =  await this.findById(dto.id)
 
    try {
       
-    await database.roles.destroy({
+    await database.permissoes.destroy({
       where: {
         id: role.id
       }
@@ -97,10 +100,10 @@ class RoleService {
 
     } catch (error) {
       
-      throw new Error('Erro ao tentar deletar a regra!')
+      throw new Error('Erro ao tentar deletar o usuario!')
     }
 
   }
 }
 
-module.exports = RoleService
+module.exports = PermissaoService
