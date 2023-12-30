@@ -71,7 +71,7 @@ class RoleService {
       role.nome = dto.nome;
       role.descricao = dto.descricao
 
-      await role.save
+      await role.save()
 
       
       return role
@@ -79,6 +79,25 @@ class RoleService {
     } catch (error) {
       
       throw new Error(error)
+    }
+
+  }
+
+  async roleDelete(dto){
+   
+    const role =  await this.roleById(dto.id)
+
+   try {
+      
+    await database.roles.destroy({
+      where: {
+        id: role.id
+      }
+    })
+
+    } catch (error) {
+      
+      throw new Error('Erro ao tentar deletar o usuario!')
     }
 
   }

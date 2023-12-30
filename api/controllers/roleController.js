@@ -39,13 +39,26 @@ class RoleController {
 
   static async roleUpdate(req, res){
     
-    const { id } = req.params
+    const  id = req.params
     const {nome, descricao} = req.body
 
 
     try {
       const newRole = await roleServices.roleUpdate({id, nome, descricao}) 
       res.status(201).send(newRole)
+    } catch (error) {
+      res.status(400).send({ message: "erro aqui " + error.message })
+    }
+  }
+
+
+  static async roleDelete(req, res){
+    
+    const  id = req.params
+    
+    try {
+      await roleServices.roleDelete({id}) 
+      res.status(201).send({ message: "Regra deletada com sucesso"})
     } catch (error) {
       res.status(400).send({ message: "erro aqui " + error.message })
     }

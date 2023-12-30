@@ -7,7 +7,7 @@ router
 .post("/roles", RoleController.cadastrar)
 .get('/roles', RoleController.allRoles)
 .get('/roles/:id', RoleController.roleById)
-.delete('/roles/:id')
+.delete('/roles/:id', RoleController.roleDelete)
 .put('/roles/:id', RoleController.roleUpdate)
 
 module.exports = router 
