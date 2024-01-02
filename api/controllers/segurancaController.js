@@ -21,6 +21,24 @@ class SegurancaController {
     
 
   }
+
+  static async cadastrarPermissoesRoles(req,res){
+
+    const { roleId, permissoes } = req.body
+
+    try {
+      
+      const permissoesRoles = await segurancaService.cadastrarPermissoesRoles({roleId, permissoes})
+      
+      res.status(200).send(permissoesRoles)
+
+    } catch (error) {
+      res.status(400).send({
+        message: error.message
+      })
+    }
+
+  }
 }
 
 module.exports = SegurancaController;
