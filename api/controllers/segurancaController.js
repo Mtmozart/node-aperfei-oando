@@ -17,6 +17,7 @@ class SegurancaController {
         message: error.message
       })
     }
+  
     
 
   }

@@ -4,7 +4,7 @@ const seguranca = require('../controllers/segurancaController');
 const SegurancaController = require('../controllers/segurancaController');
 
 router
-  .post('seguranca/acl', SegurancaController.cadastrarAcl)
+  .post('/seguranca/acl', SegurancaController.cadastrarAcl)
 
 
 

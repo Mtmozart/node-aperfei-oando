@@ -10,8 +10,8 @@ const seguranca = require('./seguranca')
 
 module.exports = app => {
   app.use(
-    bodyParser.json(),
-    auth,
+    bodyParser.json(),  
+    auth,    
     usuario,
     role,
     produto,
